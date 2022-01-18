@@ -18,6 +18,7 @@ class functionMaker():
     def makeArgsStr(self):
         self.argsStr = f""
         for arg in self.argsList:
+            # Pas touche à l'espace à la fin
             self.argsStr += f"{arg.argName} IN {arg.argType} "
 
     def makeFunctionStr(self):
