@@ -10,8 +10,13 @@ class roleMaker():
         self.rightsStr = f""
         for table in self.roleRights:
             self.rightsStr += f"GRANT "
-            for right in self.roleRights[table]:
-                self.rightsStr += f"{right} {table}, "
+            if table == "ANY TABLE":
+                for right in self.roleRights[table]:
+                    self.rightsStr += f"{right} {table}, "
+            else:
+                for right in self.roleRights[table]:
+                    self.rightsStr += f"{right}, "
+                self.rightsStr += f"ON {table} "
             self.rightsStr += f"TO {self.roleName};\n"
 
     def makeRole(self):
